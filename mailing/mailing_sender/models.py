@@ -34,7 +34,8 @@ class Sender(models.Model):
         text = self.text
         eta = self.start_mailing
         expires = self.stop_mailing
-        queryset = Client.objects.all().values('id', 'email')
+        queryset = Client.objects.all().values('first_name', 'last_name', 'email', 'birthday')
+        # queryset = Client.objects.all()
         queryset = list(queryset)
         super(Sender, self).save(*args, **kwargs)
         kw = {'queryset': queryset, 'text': text}
