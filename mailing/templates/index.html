@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Отправка рассылки : {{ block.super }}
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Отправка рассылки</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary btn-block">Отправить</button>
+</form>
+
+
+<div id="builder2708634" class="builder  animated-block" data-path="items" data-animation-order="in-turn">
+    <table>
+        <h3>Доступные переменные</h3>
+        <tbody>
+        <tr>
+            <td>{first_name}</td>
+            <td>Имя пользователя</td>
+        </tr>
+        <tr>
+            <td>{last_name}</td>
+            <td>Фамилия</td>
+        </tr>
+        <tr>
+            <td>{email}</td>
+            <td>e-mail</td>
+        </tr>
+        <tr>
+            <td>{birthday}</td>
+            <td>День рождения</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}

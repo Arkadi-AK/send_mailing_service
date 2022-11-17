@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from mailing_sender.views import send_messages_view
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url('', send_messages_view, name='send_messages_view'),
 ]

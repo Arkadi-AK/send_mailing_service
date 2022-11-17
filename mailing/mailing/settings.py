@@ -20,7 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_9ulf#_yta$4-)84@37u^#3fuklu$00_==b)=&ce*fhf_%9^g*'
+# SECRET_KEY = '_9ulf#_yta$4-)84@37u^#3fuklu$00_==b)=&ce*fhf_%9^g*'
+SECRET_KEY = '123456789'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'mailing.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -109,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -122,3 +123,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+# Redis related settings
+# REDIS_HOST = '0.0.0.0'
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
+# If celery and redis are in local, use these settings:
+CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASKS_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+# If celery and redis are in docker, use these settings:
+# CELERY_BROKER_URL = 'redis://redis:6379/0'
+# CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
