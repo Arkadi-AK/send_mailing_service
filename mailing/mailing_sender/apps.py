@@ -6,3 +6,6 @@ from django.apps import AppConfig
 
 class MailingSenderConfig(AppConfig):
     name = 'mailing_sender'
+
+    def ready(self):
+        import mailing_sender.signals

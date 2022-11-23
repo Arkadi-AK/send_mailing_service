@@ -125,8 +125,8 @@ STATIC_URL = '/static/'
 REDIS_HOST = '127.0.0.1'
 REDIS_PORT = '6379'
 # If celery and redis are in local, use these settings:
-CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+# CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+# CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -134,8 +134,8 @@ CELERY_TASKS_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 # If celery and redis are in docker, use these settings:
-# CELERY_BROKER_URL = 'redis://redis:6379/0'
-# CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
 # e-mail settings
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
