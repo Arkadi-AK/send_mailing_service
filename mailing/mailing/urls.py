@@ -20,6 +20,6 @@ from mailing_sender.views import send_messages_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('mailing-sender/', include('mailing_sender.urls')),
-    url('', send_messages_view, name='send_messages_view'),
+    url('send', send_messages_view, name='send_messages_view'),
+    url('mailing-sender/', include('mailing_sender.urls'))
 ]
