@@ -1,4 +1,4 @@
-# Send_mailing_service (Mailguner)
+# Send_mailing_service
 
 ## Установка
 ```bash
