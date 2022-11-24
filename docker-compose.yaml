@@ -33,7 +33,6 @@ services:
 
   celery:
     build : ./mailing
-#    command: celery -A mailing worker -l INFO
     command: celery worker --app=mailing --loglevel=info
     volumes:
       - ./:/app
